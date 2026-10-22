@@ -11,6 +11,7 @@ from pathlib import Path
 import time
 
 from llm import enrich, enabled
+from symbolism import apply_symbolism
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, Response
@@ -72,7 +73,7 @@ def personalize(profile: Profile):
     resource = ["тихих паузах без спешки", "разговорах с близкими", "творчестве без оценки результата", "прогулках и новых впечатлениях"][profile.answers["resource"]]
     permission = ["начинать с чистого листа", "учитывать собственные желания", "проявлять смелость маленькими шагами", "замедляться без чувства вины"][profile.answers["step"]]
     season = ["Начало года", "Весна", "Лето", "Осень"][seed % 4]
-    return {
+    result = {
         "year": 2027,
         "title": f"Твой 2027: {symbol['name'].lower()}",
         "intro": f"{profile.full_name}, тема твоего символического прогноза — {direction}. Пусть 2027 станет поводом разрешить себе {permission}.",
@@ -85,6 +86,7 @@ def personalize(profile: Profile):
         "mode": "template",
         "notice": "Развлекательный символический прогноз, а не достоверное предсказание будущего.",
     }
+    return apply_symbolism(result, profile)
 
 
 def render_svg(talisman):
@@ -114,7 +116,7 @@ async def lifespan(app):
 
 
 def create_app():
-    application = FastAPI(title=os.getenv("APP_TITLE", "Мутно · 2027"), version=os.getenv("APP_VERSION", "0.1.0"), lifespan=lifespan)
+    application = FastAPI(title=os.getenv("APP_TITLE", "Мутно · 2027"), version=os.getenv("APP_VERSION", "0.1.0"), lifespan=lifespan, telemetry={"tracing": False, "metrics": False, "logs": False, "operation_spans": False, "auto_configure": False})
     application.mount("/static", StaticFiles(directory=BASE / "static"), name="static")
 
     @application.middleware("http")

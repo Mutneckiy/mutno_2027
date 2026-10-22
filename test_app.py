@@ -1,10 +1,35 @@
 from datetime import date, timedelta
+import socket
 from xml.etree import ElementTree
 
 import pytest
 from fastapi.testclient import TestClient
 
 from app_final import create_app
+
+
+def test_template_request_needs_no_external_network(monkeypatch, profile):
+    """Keep questionnaire processing local even if telemetry is enabled in the environment."""
+    monkeypatch.setenv("LLM_ENABLED", "false")
+    monkeypatch.setenv("FASTAPI_OTEL_AUTO_CONFIGURE", "true")
+    monkeypatch.setenv("OTEL_EXPORTER_OTLP_ENDPOINT", "https://collector.invalid")
+    attempted = []
+    original_connect = socket.socket.connect
+
+    def local_only(sock, address):
+        # Windows asyncio can use loopback connections for its internal wakeup pipe.
+        if isinstance(address, tuple) and address[0] in ("127.0.0.1", "::1"):
+            return original_connect(sock, address)
+        attempted.append(address)
+        raise OSError("External networking is disabled for this test")
+
+    monkeypatch.setattr(socket.socket, "connect", local_only)
+    monkeypatch.setattr(socket.socket, "connect_ex", local_only)
+    with TestClient(create_app()) as test_client:
+        response = test_client.post("/api/predictions", json=profile)
+        assert response.status_code == 200
+        assert response.json()["mode"] == "template"
+    assert attempted == []
 
 
 @pytest.fixture

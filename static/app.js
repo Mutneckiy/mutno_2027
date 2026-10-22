@@ -3,6 +3,7 @@ const form = document.querySelector('#profile-form');
 const status = document.querySelector('#form-status');
 const submit = document.querySelector('#submit-button');
 const result = document.querySelector('#result');
+const oracleLoading = document.querySelector('#oracle-loading');
 let questions = [];
 let imageUrl;
 const today = new Date();
@@ -46,7 +47,11 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
   submit.disabled = true;
-  status.textContent = 'Собираем твоё послание…';
+  status.textContent = 'Обращаемся к оракулу…';
+  status.classList.add('is-pending');
+  submit.setAttribute('aria-busy', 'true');
+  oracleLoading.hidden = false;
+  result.hidden = true;
   const data = new FormData(form);
   const profile = {
     full_name: data.get('full_name').trim(),
@@ -66,6 +71,27 @@ form.addEventListener('submit', async (event) => {
     document.querySelector('#result-title').textContent = prediction.title;
     document.querySelector('#result-intro').textContent = prediction.intro;
     document.querySelector('#notice').textContent = prediction.notice;
+    const symbols = prediction.symbolic_profile;
+    const summary = document.querySelector('#symbolic-summary');
+    summary.replaceChildren();
+    if (symbols) {
+      const labels = [
+        symbols.western.sign,
+        `${symbols.chinese.animal} · ${symbols.chinese.element}`,
+        `Число пути ${symbols.numerology.life_path}`,
+        `Личный год ${symbols.numerology.personal_year}`
+      ];
+      if (symbols.numerology.name_number !== null) {
+        labels.push(`Число имени ${symbols.numerology.name_number}`);
+      }
+      labels.forEach(label => {
+        const chip = document.createElement('span');
+        chip.textContent = label;
+        summary.append(chip);
+      });
+    }
+    document.querySelector('#symbolic-method').textContent = symbols?.method || '';
+    document.querySelector('.symbolic-method').hidden = !symbols;
     const chapters = document.querySelector('#chapters');
     chapters.replaceChildren();
     prediction.chapters.forEach(chapter => {
@@ -93,6 +119,9 @@ form.addEventListener('submit', async (event) => {
   } catch (error) {
     status.textContent = error.name === 'TimeoutError' ? 'Сервер отвечает слишком долго. Попробуй ещё раз.' : error instanceof TypeError ? 'Не удалось связаться с сервером. Проверь соединение и повтори.' : error.message;
   } finally {
+    oracleLoading.hidden = true;
+    status.classList.remove('is-pending');
+    submit.removeAttribute('aria-busy');
     submit.disabled = false;
   }
 });

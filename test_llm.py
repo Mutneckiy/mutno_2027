@@ -49,6 +49,10 @@ def test_llm_endpoint_preserves_talisman_and_download(monkeypatch, profile):
     assert len(captured) == 1
     sent = json.loads(captured[0]["messages"][1]["content"])
     assert sent["answers"][0]["answer"] == QUESTIONS[0]["options"][0]
+    assert len(sent["answers"]) == 5
+    assert sent["symbolic_profile"]["western"]["sign"] == "Весы"
+    assert sent["symbolic_profile"]["chinese"]["animal"] == "Кролик"
+    assert result["symbolic_profile"] == sent["symbolic_profile"]
     assert response.headers["cache-control"] == "no-store"
 
 

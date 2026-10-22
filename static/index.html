@@ -30,14 +30,23 @@
           <div id="questions"><p class="muted">Загружаем вопросы…</p></div>
           <div class="form-heading second"><h3>Одно большое желание</h3><span>03 — 03</span></div>
           <label for="wish">Чего ты хочешь от 2027 года?</label><textarea id="wish" name="wish" placeholder="Хочу наконец решиться на…" required minlength="3" maxlength="600" rows="4"></textarea>
-          <p class="privacy">Анкета нужна только для этого результата. Мы не сохраняем её на сервере. Сейчас послание собирается по символическим шаблонам.</p>
+          <p class="privacy">Анкета нужна только для этого послания и не сохраняется приложением. Оракул соединяет твои ответы с символикой зодиака, китайского календаря, имени и даты рождения.</p>
+          <div id="oracle-loading" class="oracle-loading" hidden aria-hidden="true">
+  <div class="crystal-scene">
+    <span class="crystal-ring"></span>
+    <div class="crystal-ball"><span class="crystal-mist"></span><span class="crystal-sigil">✧</span></div>
+    <span class="crystal-spark spark-one">✦</span><span class="crystal-spark spark-two">✧</span><span class="crystal-spark spark-three">✦</span>
+    <span class="crystal-base"></span>
+  </div>
+  <p class="oracle-caption">Звёзды, символы и твои ответы складываются в послание</p>
+</div>
           <p id="form-status" class="status" role="status" aria-live="polite"></p>
           <button id="submit-button" type="submit" class="button primary" disabled>Показать мой 2027 <span>✧</span></button>
           <noscript>Для заполнения анкеты включи JavaScript в браузере.</noscript>
         </form>
       </div>
     </section>
-    <section id="result" class="result wrap" hidden aria-labelledby="result-title" tabindex="-1"><p class="eyebrow">ТВОЙ ЗНАК НА НОВЫЙ ГОД</p><h2 id="result-title"></h2><div class="result-grid"><div><p id="result-intro" class="lead"></p><div id="chapters"></div><p id="notice" class="micro"></p><button id="again" class="button secondary" type="button">Изменить ответы ↗</button></div><aside class="talisman-card"><img id="talisman-image" alt=""><h3 id="talisman-name"></h3><p id="talisman-meaning"></p><a id="download" class="button primary" download="mutno-2027.svg">Сохранить SVG ↓</a></aside></div></section>
+    <section id="result" class="result wrap" hidden aria-labelledby="result-title" tabindex="-1"><p class="eyebrow">ТВОЙ ЗНАК НА НОВЫЙ ГОД</p><h2 id="result-title"></h2><div class="result-grid"><div><p id="result-intro" class="lead"></p><div id="symbolic-summary" class="symbolic-summary"></div><details class="symbolic-method"><summary>На чём основано послание</summary><p id="symbolic-method"></p></details><div id="chapters"></div><p id="notice" class="micro"></p><button id="again" class="button secondary" type="button">Изменить ответы ↗</button></div><aside class="talisman-card"><img id="talisman-image" alt=""><h3 id="talisman-name"></h3><p id="talisman-meaning"></p><a id="download" class="button primary" download="mutno-2027.svg">Сохранить SVG ↓</a></aside></div></section>
   </main>
   <footer class="footer wrap"><a class="brand" href="/">мутно<span>✳</span></a><p>Немного магии. Много тебя.</p><span>2027 · РАЗВЛЕКАТЕЛЬНЫЙ ПРОЕКТ</span></footer>
 </body>
