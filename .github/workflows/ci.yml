@@ -27,6 +27,8 @@ jobs:
           if-no-files-found: error
           path: |
             app_final.py
+            llm.py
+            test_llm.py
             static/
             requirements.txt
             requirements-dev.txt

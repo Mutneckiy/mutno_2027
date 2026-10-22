@@ -1,4 +1,4 @@
-"""Personal predictions and SVG talismans. MVP uses local templates, not an LLM."""
+"""Personal predictions and SVG talismans. Supports optional local LLM text generation."""
 
 from contextlib import asynccontextmanager
 from datetime import date
@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import time
 
+from llm import enrich, enabled
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, Response
@@ -107,7 +108,7 @@ def render_svg(talisman):
 
 @asynccontextmanager
 async def lifespan(app):
-    log.info("Application started version=%s mode=template", app.version)
+    log.info("Application started version=%s mode=%s", app.version, "llm" if enabled() else "template")
     yield
     log.info("Application stopped")
 
@@ -135,7 +136,7 @@ def create_app():
 
     @application.get("/health")
     def health():
-        return {"status": "ok", "mode": "template"}
+        return {"status": "ok", "mode": "llm" if enabled() else "template"}
 
     @application.get("/version")
     def version():
@@ -151,7 +152,7 @@ def create_app():
 
     @application.post("/api/predictions")
     def predict(profile: Profile):
-        result = personalize(profile)
+        result = enrich(profile, QUESTIONS, personalize(profile))
         result["svg"] = render_svg(result["talisman"])
         return result
 

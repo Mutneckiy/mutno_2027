@@ -57,7 +57,7 @@ form.addEventListener('submit', async (event) => {
   try {
     const response = await fetch('/api/predictions', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(profile), signal: AbortSignal.timeout(20000)
+      body: JSON.stringify(profile), signal: AbortSignal.timeout(100000)
     });
     if (!response.ok) {
       throw new Error(response.status === 422 ? 'Проверь имя, дату рождения и желание: нужны все пять ответов, а в желании — хотя бы 3 символа.' : 'Не получилось собрать послание. Попробуй ещё раз чуть позже.');

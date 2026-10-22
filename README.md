@@ -227,3 +227,7 @@ git pull --ff-only
 
 Преподавателю: ссылка на публичный репозиторий, ссылка на последний успешный
 GitHub Actions и одно предложение о назначении приложения.
+
+## Local LLM integration
+
+See [deploy/LLM.md](deploy/LLM.md) for reverse SSH setup, configuration, deployment and fallback behavior. The template-only mode described above remains the default.

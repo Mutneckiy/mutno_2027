@@ -8,7 +8,8 @@ from app_final import create_app
 
 
 @pytest.fixture
-def client():
+def client(monkeypatch):
+    monkeypatch.setenv("LLM_ENABLED", "false")
     with TestClient(create_app()) as test_client:
         yield test_client
 
