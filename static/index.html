@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111018">
+  <meta name="description" content="Пять вопросов, одно желание и твой персональный талисман на 2027 год.">
+  <title>Мутно — твой знак на 2027</title>
+  <link rel="icon" href="/static/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="header wrap"><a class="brand" href="/" aria-label="Мутно — главная">мутно<span>✳</span></a><span class="edition">ЛИЧНЫЙ РИТУАЛ · 2027</span><a href="#ritual" class="header-link">Найти свой знак ↗</a></header>
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span class="dot"></span> БУДУЩЕЕ ПОКА НЕ НАПИСАНО</p><h1 id="hero-title">Всё немного<br>мутно.<br><em>Кроме тебя.</em></h1><p class="lead">Загляни в свой 2027. Пять вопросов, одно желание — и маленький символ большого нового начала.</p><a class="button primary" href="#ritual">Получить свой талисман <span>↗</span></a><p class="micro">Около 2 минут · без регистрации</p></div>
+      <div class="cosmos" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit orbit-three"></span><span class="star s1">✧</span><span class="star s2">✦</span><span class="star s3">+</span><div class="orb"><svg viewBox="0 0 300 300"><circle cx="150" cy="150" r="108"/><path d="M150 36 175 125 264 150 175 175 150 264 125 175 36 150 125 125Z"/><path class="faint" d="M150 22 261 214H39ZM150 278 39 86H261Z"/><circle cx="150" cy="150" r="8"/></svg></div><span class="orbit-caption">ТВОЙ ВНУТРЕННИЙ КОМПАС</span><span class="year">20<span>✳</span>27</span></div>
+    </section>
+    <div class="divider wrap"><span>НЕ ОТВЕТЫ НА ВСЁ. ОТПРАВНАЯ ТОЧКА ДЛЯ ТЕБЯ.</span><span>↓</span></div>
+    <section class="how wrap" aria-label="Как это работает"><article><span class="number">01 /</span><h2>Прислушайся</h2><p>Расскажи немного о себе и о том, чего ждёшь от нового года.</p></article><article><span class="number">02 /</span><h2>Загадай</h2><p>Дай своему желанию слова. Не правильные — свои.</p></article><article><span class="number">03 /</span><h2>Забери свой знак</h2><p>Прочитай послание и сохрани персональный векторный талисман.</p></article></section>
+    <section id="ritual" class="ritual wrap" aria-labelledby="ritual-title">
+      <div class="ritual-intro"><p class="eyebrow">НАЧНИ С СЕБЯ</p><h2 id="ritual-title">Каким будет<br><em>твой 2027?</em></h2><p>Здесь нет правильных ответов.<br>Есть только твои.</p><div class="note">✳<p>Это творческий ритуал для вдохновения. Будущее остаётся в твоих руках.</p></div></div>
+      <div class="form-card">
+        <form id="profile-form">
+          <div class="form-heading"><h3>Немного о тебе</h3><span>01 — 03</span></div>
+          <label for="full-name">Как тебя зовут?</label><input id="full-name" name="full_name" autocomplete="name" placeholder="Имя или ФИО" required maxlength="120">
+          <label for="birth-date">Дата рождения</label><input id="birth-date" name="birth_date" type="date" min="1900-01-01" required>
+          <div class="form-heading second"><h3>Пять маленьких вопросов</h3><span>02 — 03</span></div>
+          <div id="questions"><p class="muted">Загружаем вопросы…</p></div>
+          <div class="form-heading second"><h3>Одно большое желание</h3><span>03 — 03</span></div>
+          <label for="wish">Чего ты хочешь от 2027 года?</label><textarea id="wish" name="wish" placeholder="Хочу наконец решиться на…" required minlength="3" maxlength="600" rows="4"></textarea>
+          <p class="privacy">Анкета нужна только для этого результата. Мы не сохраняем её на сервере. Сейчас послание собирается по символическим шаблонам.</p>
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+          <button id="submit-button" type="submit" class="button primary" disabled>Показать мой 2027 <span>✧</span></button>
+          <noscript>Для заполнения анкеты включи JavaScript в браузере.</noscript>
+        </form>
+      </div>
+    </section>
+    <section id="result" class="result wrap" hidden aria-labelledby="result-title" tabindex="-1"><p class="eyebrow">ТВОЙ ЗНАК НА НОВЫЙ ГОД</p><h2 id="result-title"></h2><div class="result-grid"><div><p id="result-intro" class="lead"></p><div id="chapters"></div><p id="notice" class="micro"></p><button id="again" class="button secondary" type="button">Изменить ответы ↗</button></div><aside class="talisman-card"><img id="talisman-image" alt=""><h3 id="talisman-name"></h3><p id="talisman-meaning"></p><a id="download" class="button primary" download="mutno-2027.svg">Сохранить SVG ↓</a></aside></div></section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/">мутно<span>✳</span></a><p>Немного магии. Много тебя.</p><span>2027 · РАЗВЛЕКАТЕЛЬНЫЙ ПРОЕКТ</span></footer>
+</body>
+</html>
