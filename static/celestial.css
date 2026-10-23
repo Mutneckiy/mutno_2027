@@ -1,0 +1,35 @@
+/* Antique celestial atlas: gold, deep teal and warm starlight. */
+:root{color-scheme:dark;--bg:#0b1113;--text:#eee0c4;--muted:#b8ad97;--line:#c99b5140;--accent:#dfb76e;--card:#111d20}
+body{background:radial-gradient(ellipse at 90% 4%,#78391d28,transparent 38%),radial-gradient(ellipse at 0 45%,#164a4530,transparent 45%),var(--bg)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(circle,#d5ac6380 .7px,transparent 1px),radial-gradient(circle,#d5ac6340 .6px,transparent 1px);background-size:137px 163px,89px 113px;background-position:19px 37px,61px 83px}
+.header{border-bottom:1px solid var(--line);height:100px}
+.brand{font-family:Georgia,serif;font-size:38px;font-weight:400;letter-spacing:-2px}
+.brand span{color:var(--accent);font-size:26px}
+.hero{grid-template-columns:.95fr 1.05fr;gap:45px;min-height:760px;padding:40px 0 65px}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(60px,6.4vw,86px);line-height:1.05;font-weight:400;letter-spacing:-3px}
+.eyebrow{letter-spacing:2.5px}.lead{font-size:17px;line-height:1.9}.micro{font-size:11px}
+.celestial-atlas{position:relative;max-width:485px;width:100%;justify-self:center;margin:0;padding:9px;border:1px solid #c99b5160;border-radius:240px 240px 12px 12px;background:#090e10;box-shadow:0 0 90px #c08a3020}
+.celestial-atlas::before{content:'';position:absolute;inset:-9px;border:1px solid #c99b5125;border-radius:250px 250px 16px 16px;pointer-events:none}
+.celestial-atlas img{display:block;width:100%;height:auto;border-radius:230px 230px 5px 5px;opacity:.94}
+.celestial-atlas figcaption{font-size:9px;letter-spacing:2.3px;color:var(--accent);text-align:center;padding:18px 8px 12px}
+.button{border-radius:3px;min-height:54px;letter-spacing:.3px}
+.primary{background:linear-gradient(120deg,#e1ba76,#bb8740);color:#171a16;border:1px solid #eccd92;box-shadow:0 4px 22px #bd8a3020}
+.primary:hover{background:#efd29b;transform:translateY(-1px)}
+.divider{border-block:1px solid var(--line);color:var(--accent)}
+.how{gap:35px;padding:48px 0 75px}.how article{padding:8px 25px 8px 0;border-right:1px solid var(--line)}.how article:last-child{border:0}
+.how h2,.form-heading h3,.chapter h3{font-family:Georgia,serif}.how h2{font-size:26px}.how p{font-size:14px}.number{color:var(--accent)}
+.ritual{grid-template-columns:.85fr 1.2fr;gap:70px}.ritual h2,.result h2{font-family:Georgia,serif;font-size:54px;letter-spacing:-1.5px}
+.note{border-top:1px solid var(--line);padding-top:25px}.note p{font-size:13px}
+.form-card{background:linear-gradient(140deg,#152629,#10191c);border:1px solid #ba945865;border-radius:14px;padding:35px;box-shadow:inset 0 0 0 6px #0a111550,0 18px 65px #0003}
+.form-heading{border-bottom:1px solid var(--line);padding-bottom:14px}.form-heading h3{font-size:23px}
+label,legend{font-size:14px}input:not([type=radio]),textarea{background:#0b1417;border-color:#ba945855;color:var(--text);border-radius:4px;font-size:16px;padding:14px}
+input::placeholder,textarea::placeholder{color:#938c7c}.option{font-size:13px;min-height:48px;padding:11px;border-color:#ba94584a;border-radius:4px;background:#0d191b;color:#c5bda9}.option:has(input:checked){background:#b28b4220;border-color:var(--accent)}input[type=radio]{width:15px;height:15px}
+.privacy{font-size:12px}.status{font-size:14px}.status.is-pending{color:var(--accent)}
+.result-grid{grid-template-columns:1.15fr 1fr;gap:55px}.chapter{padding-top:16px;border-top:1px solid var(--line)}.chapter h3{font-size:25px}.chapter p{font-size:15px;line-height:1.85}
+.talisman-card{background:radial-gradient(circle at 50% 15%,#233c39,#101a1d 65%);border:1px solid #bd955d70;padding:23px;border-radius:15px;box-shadow:0 0 65px #b68b2f0b}.talisman-card img{display:block;width:100%;border-radius:50%;box-shadow:0 0 0 1px #c69c5d60,0 0 0 7px #0b1113,0 0 0 8px #c69c5d30}.talisman-card h3{color:var(--accent);margin-top:28px;font-size:29px}.talisman-card p{line-height:1.8}
+.symbolic-summary span{border-color:#c79a5855;background:#b18c3710;color:var(--accent);font-size:12px}.symbolic-method{font-size:12px}
+.crystal-ball{border-color:#ecc68499;background:radial-gradient(ellipse at 28% 20%,#fff9,transparent 32%),radial-gradient(circle at 50% 65%,#cca75d88,#2d74646b 45%,#101d24 78%);box-shadow:inset -12px -12px 24px #030d13aa,inset 4px 3px 14px #fff3,0 0 35px #c79b4344}
+.crystal-mist{background:conic-gradient(from 30deg,transparent,#b8d4bd75,transparent,#d4a65aa0,transparent)}.crystal-sigil{color:#f6ddb0;text-shadow:0 0 16px #e8bd79}.crystal-ring{border-color:#d7ae6988}.crystal-spark{color:#e4b56f;text-shadow:0 0 8px #e4b56f}.crystal-base{background:linear-gradient(#9e7840,#352c1d)}.crystal-base::before{background:linear-gradient(#3d3525,#b29257)}
+@media(max-width:1000px){.hero{gap:35px;min-height:640px}.ritual{gap:35px}.form-card{padding:26px}.result-grid{gap:30px}}
+@media(max-width:700px){.wrap{width:calc(100% - 40px)}.hero{grid-template-columns:1fr;padding:35px 0 55px;gap:35px;overflow:visible}.hero-copy{max-width:500px}h1{font-size:clamp(54px,12vw,76px)}.celestial-atlas{max-width:380px;width:calc(100% - 20px)}.how{grid-template-columns:1fr;gap:0;padding:25px 0 45px}.how article{border:0;border-bottom:1px solid var(--line);padding:22px 0 22px 40px;position:relative}.how .number{position:absolute;left:0;top:28px}.how h2{margin:0 0 8px}.how p{margin:0;max-width:none}.ritual{grid-template-columns:1fr;gap:25px;padding:45px 0 60px}.ritual-intro{position:static}.ritual h2,.result h2{font-size:44px}.form-card{padding:24px 18px}.result-grid{grid-template-columns:1fr}.talisman-card{max-width:460px;width:100%;margin:auto}.footer{flex-wrap:wrap}.footer>span{width:100%}}
+@media(max-width:380px){.options{grid-template-columns:1fr}.form-heading h3{font-size:20px}.button{gap:15px;padding-inline:16px}.header-link{font-size:10px}}
