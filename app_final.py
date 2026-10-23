@@ -3,7 +3,6 @@
 from contextlib import asynccontextmanager
 from datetime import date
 from hashlib import sha256
-from html import escape
 import json
 import logging
 import os
@@ -12,6 +11,7 @@ import time
 
 from llm import enrich, enabled
 from symbolism import apply_symbolism
+from talisman import personalize_art, render_svg
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, Response
@@ -86,26 +86,10 @@ def personalize(profile: Profile):
         "mode": "template",
         "notice": "Развлекательный символический прогноз, а не достоверное предсказание будущего.",
     }
-    return apply_symbolism(result, profile)
+    result = apply_symbolism(result, profile)
+    personalize_art(result["talisman"], profile, result["symbolic_profile"])
+    return result
 
-
-def render_svg(talisman):
-    a, b = talisman["primary"], talisman["secondary"]
-    shapes = {
-        "star": '<path d="M256 124 285 221 388 256 285 285 256 388 227 285 124 256 227 227Z"/>',
-        "sun": '<circle cx="256" cy="256" r="63"/>' + ''.join(f'<path transform="rotate({i * 30} 256 256)" d="M256 137V164"/>' for i in range(12)),
-        "compass": '<path d="M256 115 295 256 256 397 217 256Z"/><path d="M115 256H397M256 115V397"/>',
-        "seed": '<path d="M256 365V230M256 279C151 279 153 173 153 173S256 172 256 279ZM256 235C256 137 359 147 359 147S364 241 256 235Z"/>',
-    }
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-<title id="title">{escape(talisman['name'])}</title><desc id="desc">{escape(talisman['meaning'])}</desc>
-<defs><radialGradient id="bg"><stop stop-color="#282344"/><stop offset="1" stop-color="#11101c"/></radialGradient><linearGradient id="ink" x2="1" y2="1"><stop stop-color="{a}"/><stop offset="1" stop-color="{b}"/></linearGradient></defs>
-<rect width="512" height="512" rx="48" fill="url(#bg)"/>
-<g fill="none" stroke="url(#ink)" stroke-width="1.5"><circle cx="256" cy="256" r="201" opacity=".3"/><circle cx="256" cy="256" r="179" opacity=".6"/>
-<g transform="rotate({talisman['variant'] * 5} 256 256)"><path d="M256 55 430 357H82Z" opacity=".22"/><path d="M256 457 82 155H430Z" opacity=".22"/></g>
-<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">{shapes[talisman['id']]}</g></g>
-<g fill="{a}"><circle cx="256" cy="55" r="4"/><circle cx="55" cy="256" r="3"/><circle cx="457" cy="256" r="3"/></g>
-<text x="256" y="425" text-anchor="middle" font-family="serif" font-size="17" letter-spacing="7" fill="{b}">2027</text></svg>'''
 
 
 @asynccontextmanager

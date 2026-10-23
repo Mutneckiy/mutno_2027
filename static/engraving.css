@@ -1,0 +1,75 @@
+/* Paper, ink and double frames inspired by engraved zodiac cards. */
+:root{color-scheme:light;--bg:#f4f0e6;--text:#20211e;--muted:#626257;--line:#25251e40;--accent:#20211e;--card:#faf7ee}
+body{background:radial-gradient(ellipse at 70% 5%,#fff9,transparent 50%),var(--bg);font-size:16px}
+.wrap{width:min(1160px,calc(100% - 64px))}
+.header{height:100px;border-bottom:3px double var(--text)}
+.brand{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:38px;letter-spacing:-2px}
+.brand span{font-size:25px}
+.edition,.eyebrow{letter-spacing:2.5px;font-size:10px}
+.header-link{border-color:var(--text)}
+.hero{grid-template-columns:1fr 1fr;min-height:700px;gap:35px;padding:65px 0 75px}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(55px,6.8vw,88px);letter-spacing:-4px;line-height:1.04;margin:28px 0}
+em{color:var(--text)}
+.lead{font-size:16px;line-height:1.8;max-width:390px}
+.button{border:1px solid var(--text);border-radius:2px;min-height:55px;font-size:13px;padding:15px 24px;gap:25px}
+.primary{background:var(--text);color:var(--bg);box-shadow:3px 3px 0 var(--bg),4px 4px 0 var(--text)}
+.primary:hover{background:#414137;transform:translateY(-2px)}
+.micro{font-size:11px;margin-top:18px}
+.deck{position:relative;height:510px;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.deck::before{content:'✦';position:absolute;font-size:32px;right:3%;top:6%}
+.deck::after{content:'✧';position:absolute;font-size:42px;left:1%;bottom:4%}
+.deck-card{position:absolute;width:60%;max-width:295px;background:var(--card);border-radius:16px;box-shadow:0 14px 24px #25251c1c;overflow:hidden}
+.deck-card img{display:block;width:100%;height:auto}
+.deck-left{transform:translate(-32%,-1%) rotate(-14deg);z-index:0}
+.deck-right{transform:translate(32%,0) rotate(14deg);z-index:1}
+.deck-center{transform:translateY(13px);z-index:2}
+.deck-caption{position:absolute;bottom:-12px;font-size:9px;letter-spacing:3px;text-align:center}
+.divider{border-block:3px double var(--text);font-size:9px;letter-spacing:1.5px;padding:18px 0;color:var(--text)}
+.how{gap:24px;padding:40px 0 75px}
+.how article{border-right:1px solid var(--line);padding:10px 25px 10px 0}
+.how article:last-child{border:0}
+.how h2,.form-heading h3,.chapter h3{font-family:Georgia,'Times New Roman',serif}
+.how h2{font-size:26px}
+.how p{font-size:14px}
+.number{font-family:Georgia,serif;font-size:14px;letter-spacing:1px}
+.ritual{border-top:3px double var(--text);gap:70px;padding:75px 0 90px;grid-template-columns:.85fr 1.2fr}
+.ritual h2,.result h2{font-family:Georgia,'Times New Roman',serif;font-size:54px;letter-spacing:-2px;line-height:1.12}
+.ritual-intro>p:not(.eyebrow){font-size:15px}
+.note{border-top:1px solid var(--line);padding-top:22px;margin-top:35px;max-width:300px}
+.note p{font-size:13px}
+.form-card{background:var(--card);border:4px double var(--text);border-radius:16px;padding:35px;box-shadow:7px 7px 0 #25251e0a}
+.form-heading{border-bottom:1px solid var(--line);padding-bottom:15px}
+.form-heading h3{font-size:23px}
+.form-heading span{font-size:10px}
+label,legend{font-size:14px}
+input:not([type=radio]),textarea{background:#fffdf7;border:1px solid #77766b;border-radius:2px;color:var(--text);padding:14px;font-size:16px}
+input::placeholder,textarea::placeholder{color:#77766b}
+.option{background:#fffdf7;border:1px solid #a5a293;border-radius:2px;min-height:48px;padding:11px;font-size:13px;color:#49493e}
+.option:has(input:checked){background:#e8e3d4;border-color:var(--text);box-shadow:inset 3px 0 0 var(--text);color:var(--text)}
+input[type=radio]{width:15px;height:15px}
+.privacy{font-size:12px}
+.status{color:#922f20;font-size:14px}
+.result{border-top:3px double var(--text)}
+.result-grid{grid-template-columns:1.2fr .85fr;gap:60px}
+.chapter{padding-top:17px;border-top:1px solid var(--line)}
+.chapter h3{font-size:25px;margin:8px 0 12px}
+.chapter p{font-size:15px;line-height:1.85}
+.talisman-card{border:4px double var(--text);border-radius:15px;background:var(--card);padding:20px}
+.talisman-card img{border-radius:10px;display:block;max-width:340px;margin:auto}
+.talisman-card h3{font-size:29px}
+.talisman-card p{font-size:13px;line-height:1.8}
+.symbolic-summary span{border:1px solid #79786c;border-radius:2px;color:var(--text);background:transparent;font-size:12px}
+.symbolic-method{font-size:12px}
+.secondary{border-color:var(--text)}
+.footer{border-top:3px double var(--text);padding:30px 0}
+.crystal-ball{border:2px solid var(--text);background:radial-gradient(ellipse at 28% 20%,#fff 0%,#fff6 18%,transparent 32%),radial-gradient(circle at 50% 65%,#eee9d5,#b9b5a3 50%,#57594f 85%);box-shadow:inset -12px -12px 24px #25251c70,inset 4px 3px 14px #fff9,0 0 0 4px var(--card),0 0 0 5px #25251c50}
+.crystal-mist{background:conic-gradient(from 30deg,transparent,#fff9,transparent,#3d443c88,transparent)}
+.crystal-ring{border-color:var(--text)}
+.crystal-sigil,.crystal-spark{color:var(--text);text-shadow:none}
+.crystal-base{border-color:var(--text);background:repeating-linear-gradient(90deg,#24251f 0 2px,#b3b1a1 2px 5px);box-shadow:none}
+.crystal-base::before{background:linear-gradient(#7b7d6e,#24251f)}
+.oracle-caption{font-size:12px}
+@media(max-width:1000px){.hero{gap:20px;min-height:610px}.deck{height:430px}.ritual{gap:35px}.form-card{padding:25px}.result-grid{gap:30px}}
+@media(max-width:700px){.wrap{width:calc(100% - 36px)}.header{height:82px}.hero{grid-template-columns:1fr;gap:30px;padding:38px 0 55px;overflow:visible}.hero-copy{max-width:480px}h1{font-size:clamp(52px,12vw,76px);letter-spacing:-3px}.deck{height:440px;width:100%;max-width:440px;margin:0 auto}.deck-card{width:56%}.deck-caption{bottom:0}.how{grid-template-columns:1fr;gap:0;padding:25px 0 45px}.how article{border:0;border-bottom:1px solid var(--line);padding:20px 0 20px 42px}.how .number{position:absolute;left:0;top:28px}.how article{position:relative}.how h2{margin:0 0 8px}.how p{max-width:none;margin:0}.ritual{grid-template-columns:1fr;padding:45px 0 60px;gap:30px}.ritual h2,.result h2{font-size:44px}.ritual-intro{position:static}.form-card{padding:24px 18px}.result-grid{grid-template-columns:1fr}.result{padding:45px 0}.talisman-card{max-width:460px;width:100%;margin:auto}.footer{flex-wrap:wrap}.footer>span{width:100%}.divider{font-size:8px;letter-spacing:.6px}}
+@media(max-width:380px){.deck{height:370px}.options{grid-template-columns:1fr}.form-heading h3{font-size:20px}.header-link{font-size:10px}.button{gap:15px;padding-inline:17px}}
+@media(prefers-reduced-motion:reduce){.primary:hover{transform:none}}

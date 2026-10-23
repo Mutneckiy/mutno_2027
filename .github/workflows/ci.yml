@@ -28,6 +28,8 @@ jobs:
           path: |
             app_final.py
             llm.py
+            talisman.py
+            test_talisman.py
             symbolism.py
             test_symbolism.py
             test_llm.py
